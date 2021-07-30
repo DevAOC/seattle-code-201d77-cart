@@ -32,14 +32,20 @@ function showCart() {
   // TODO: Create a TD for the delete link, quantity,  and the item
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
 
+
+
 }
 
 function removeItemFromCart(event) {
-
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-
+  const item = event.target; // Idk if item will have the correct object/cartItem using only event.target
+  console.log('event.target... item outcome', item);
+  debugger;
+  removeItem(item);
+  cart.saveToLocalStorage(); // Middle of function
+  renderCart();
 }
 
 // This will initialize the page and draw the cart on screen

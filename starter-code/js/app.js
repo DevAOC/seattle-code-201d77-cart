@@ -10,16 +10,25 @@ Cart.prototype.addItem = function(product, quantity) {
   // DONE: Fill in this instance method to create a new CartItem and add it to this.items
   let newItem = new CartItem(product,quantity);
   this.items.push(newItem);
+  console.log('------ this.items', this.items);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  let stringifiedArray;
+  for (let cartItem of this.items) {
+    stringifiedArray = JSON.stringify(cartItem);
+    localStorage.setItem('cart', stringifiedArray);
+  } // Check if this makes a 'double' storage situation
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.removeItem = function() {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
   /// ----------------- try googling splice ------------- ///
+  const itemIndex = this.items.indexOf(item);
+  this.items.splice(itemIndex, 1);
+  // this.items === cart ---- itemIndex === index of the item in cart ---- splice(itemIndex, 1) === remove 1 element starting at index itemIndex
 };
 
 const CartItem = function(product, quantity) {
